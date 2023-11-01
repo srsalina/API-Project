@@ -36,7 +36,7 @@ module.exports = {
     const Op = Sequelize.Op;
 
     return queryInterface.bulkDelete(options, {
-      star: { [Op.in]: [1, 3, 5] }
+      stars: { [Op.in]: [1, 3, 5] }
     }, {});
   }
 };

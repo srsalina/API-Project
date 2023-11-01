@@ -30,7 +30,7 @@ const validateSpot = (req, res, next) => {
 
 
 
-//Get all spots
+// * GET ALL SPOTS
 router.get('/', async (req, res) => {
 
 
@@ -39,15 +39,16 @@ router.get('/', async (req, res) => {
         include: [Review, SpotImage],
     })
 
-    let addedPropSpots = spots.map(async (spot) => {
+    let addedSpots = spots.map(async (spot) => {
         let reviews = spot.toJSON().Reviews
+        // console.log('hji')
         let starRatings = []
-        let reviewArr = []
+        let reviewArray = []
 
         reviews.forEach(review => {
             let rating = review.stars
             starRatings.push(rating)
-            reviewArr.push(reviews)
+            reviewArray.push(reviews)
         });
         let sum = starRatings.reduce((prevNum, currNum) => prevNum + currNum, 0)
         let avgRating = parseFloat((sum / starRatings.length).toFixed(2))
@@ -62,10 +63,10 @@ router.get('/', async (req, res) => {
         return rdel
     });
 
-    addedPropSpots = await Promise.all(addedPropSpots)
+    addedSpots = await Promise.all(addedSpots)
 
     res.json({
-        "Spots": addedPropSpots
+        "Spots": addedSpots
     })
 })
 
@@ -82,12 +83,12 @@ router.get("/current", requireAuth, async (req, res) => {
     let finalSpots = spots.map(spot => {
         let reviews = spot.toJSON().Reviews
         let starRatings = []
-        let reviewArr = []
+        let reviewArray = []
 
         reviews.forEach(review => {
             let rating = review.stars
             starRatings.push(rating)
-            reviewArr.push(reviews)
+            reviewArray.push(reviews)
         });
         let sumRatings = starRatings.reduce((prevNum, currNum) => prevNum + currNum, 0)
         let avgRating = parseFloat((sumRatings/starRatings.length).toFixed(2))
@@ -98,6 +99,8 @@ router.get("/current", requireAuth, async (req, res) => {
     });
     res.status(200).json({"Spots": finalSpots})
 })
+
+
 //get details of a Spot from an id---------------------
 
 router.get("/:id", async (req, res) => {
@@ -145,38 +148,11 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(spot)
 })
 
-//Get Reviews by Spot Id---------------------------
-router.get("/:id/reviews", async (req, res) => {
-
-    let spot = await Spot.findByPk(req.params.id)
-
-    if (!spot) {
-        res.status(404).json({
-            message: "Spot couldn't be found",
-            statusCode: 404
-        })
-    }
-
-    const reviews = await Review.findAll({
-        where: {spotId: spot.id},
-        include: [{
-            model: User, attributes: ['id','firstName','lastName']
-        }, {
-            model: Image,
-            attributes: ['id', 'url']
-        }]
-    })
-
-    res.status(200).json({
-        Reviews: reviews,
-    })
-})
-
 
 
 //create a Spot
 
-router.post("/", spotCheck, requireAuth, async (req, res) => {
+router.post("/", validateSpot, requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price} = req.body;
     const {user} = req
 
@@ -240,7 +216,7 @@ router.post("/:id/images", requireAuth, async (req, res) => {
 
 
 //edit a Spot
-router.put("/:id", spotCheck, requireAuth, async (req, res) => {
+router.put("/:id", validateSpot, requireAuth, async (req, res) => {
     let spot = await Spot.findByPk(req.params.id)
     if (!spot) {
         res.status(404).json({

@@ -40,7 +40,7 @@ module.exports = {
     const Op = Sequelize.Op;
 
     return queryInterface.bulkDelete(options, {
-      startDate: { [Op.in]: ['02/05/23', '12/28/24', '01/19/24'] }
+      id: { [Op.in]: [1, 2, 3] }
     }, {});
   }
 };

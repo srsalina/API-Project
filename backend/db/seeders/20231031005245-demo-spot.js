@@ -1,7 +1,7 @@
 'use strict';
 const { Spot } = require('../models')
 
-let options =- {};
+let options = {};
 if(process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
