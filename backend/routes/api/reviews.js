@@ -14,7 +14,7 @@ const router = express.Router()
 
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req
-    const currUserRevs = await Review.findAll({
+    const currentUserReviews = await Review.findAll({
         where: {
             userId: user.id
         },
@@ -43,7 +43,7 @@ router.get('/current', requireAuth, async (req, res) => {
             }
         ]
     })
-    res.status(200).json({ Reviews: currUserRevs })
+    res.status(200).json({ Reviews: currentUserReviews })
 })
 
 
