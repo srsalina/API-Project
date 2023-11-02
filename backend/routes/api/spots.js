@@ -50,17 +50,21 @@ router.get('/', async (req, res) => {
             starRatings.push(rating)
             reviewArray.push(reviews)
         });
+
+
         let sum = starRatings.reduce((prevNum, currNum) => prevNum + currNum, 0)
-        let avgRating = parseFloat((sum / starRatings.length).toFixed(2))
-        spot.avgRating = avgRating
+        let averageRating = parseFloat((sum / starRatings.length).toFixed(2))
+        spot.avgRating = averageRating
+
+
         const spotImage = await SpotImage.findOne({ where: { spotId: spot.id } })
         if (spotImage) {
             spot.previewImage = spotImage.url;
         }
-        let rdel = spot.toJSON()
-        delete rdel.Reviews
-        delete rdel.SpotImages
-        return rdel
+        let revdel = spot.toJSON()
+        delete revdel.Reviews
+        delete revdel.SpotImages
+        return revdel
     });
 
     addedSpots = await Promise.all(addedSpots)
@@ -80,7 +84,7 @@ router.get("/current", requireAuth, async (req, res) => {
             ownerId: currentUserId
         }, include :{model: Review}
     })
-    let finalSpots = spots.map(spot => {
+    let addsArray = spots.map(spot => {
         let reviews = spot.toJSON().Reviews
         let starRatings = []
         let reviewArray = []
@@ -91,13 +95,13 @@ router.get("/current", requireAuth, async (req, res) => {
             reviewArray.push(reviews)
         });
         let sumRatings = starRatings.reduce((prevNum, currNum) => prevNum + currNum, 0)
-        let avgRating = parseFloat((sumRatings/starRatings.length).toFixed(2))
-        spot.avgRating = avgRating
-        let j = spot.toJSON()
-        delete j.Reviews
-        return j
+        let averageRating = parseFloat((sumRatings/starRatings.length).toFixed(2))
+        spot.avgRating = averageRating
+        let revdel = spot.toJSON()
+        delete revdel.Reviews
+        return revdel
     });
-    res.status(200).json({"Spots": finalSpots})
+    res.status(200).json({"Spots": addsArray})
 })
 
 
