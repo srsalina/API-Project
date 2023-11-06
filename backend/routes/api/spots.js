@@ -279,7 +279,7 @@ router.get("/:id", async (req, res) => {
 
 //create a Spot
 
-router.post("/", requireAuth, validateSpot,async (req, res) => {
+router.post("/", validateSpot ,requireAuth, async (req, res) => {
     const ownerId = req.user.id
     const timeZone = 'PST'
     const { address, city, state, country, lat, lng, name, description, price} = req.body;
