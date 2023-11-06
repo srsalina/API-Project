@@ -81,4 +81,4 @@ const queryFilter = async (req,res,next) => {
 }
 
 
-module.exports = queryFilters;
+module.exports = queryFilter;
