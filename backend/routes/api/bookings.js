@@ -1,5 +1,5 @@
 const express = require('express')
-const { Spot,Booking} = require('../../db/models');
+const { Spot,booking} = require('../../db/models');
 const { requireAuth } = require('../../utils/auth')
 const { Op, Sequelize } = require("sequelize")
 const router = express.Router()
@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req
     const timeZone = 'PST'
-    const currentBookings = await Booking.findAll({
+    const currentBookings = await booking.findAll({
         where: { userId: user.id },
         include: {
             model: Spot, attributes: [
@@ -48,11 +48,11 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
     const { user } = req;
     const timeZone = 'PST';
 
-    
+
     const newStartDate = new Date(startDate).getTime();
     const newEndDate = new Date(endDate).getTime();
 
-    
+
     const errorObj = {};
 
     if (!startDate) {
@@ -74,7 +74,7 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         });
     }
 
-    
+
     const currentDate = new Date().getTime();
     const testEndDate = new Date(endDate).getTime();
     if (currentDate >= testEndDate) {
@@ -83,32 +83,32 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
         });
     }
 
-    const booking = await Booking.findByPk(bookingId, {
+    const bookng = await booking.findByPk(bookingId, {
         attributes: ["id", "spotId", "userId", "startDate", "endDate", "createdAt", "updatedAt"]
     });
 
-    if (!booking) {
+    if (!bookng) {
         return res.status(404).json({ message: "Booking not found" });
     }
 
-    
-    if (user.id !== booking.userId) {
+
+    if (user.id !== bookng.userId) {
         return res.status(403).json({
             message: "Forbidden"
         });
     }
 
-    
-    const allBookings = await Booking.findAll({
+
+    const allBookings = await booking.findAll({
         where: {
-            spotId: booking.spotId,
-            id: { [Op.not]: booking.id }
+            spotId: bookng.spotId,
+            id: { [Op.not]: bookng.id }
         }
     });
 
-    
+
     for (let currentBooking of allBookings) {
-        
+
         const startBookDate = new Date(currentBooking.startDate).getTime();
         const endBookDate = new Date(currentBooking.endDate).getTime();
 
@@ -155,16 +155,16 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
     }
 
     // Update booking
-    booking.startDate = newStartDate;
-    booking.endDate = newEndDate;
-    await booking.save();
+    bookng.startDate = newStartDate;
+    bookng.endDate = newEndDate;
+    await bookng.save();
 
     const options = { timeZone: 'PST', year: 'numeric', month: '2-digit', day: '2-digit' };
-    const fixedTimes = {...booking.toJSON(),
-        startDate: new Date(booking.startDate).toLocaleString('en-US', options),
-        endDate: new Date(booking.endDate).toLocaleString('en-US', options),
-        updatedAt: booking.updatedAt.toLocaleString('en-US', { timeZone }),
-        createdAt: booking.createdAt.toLocaleString('en-US', { timeZone })
+    const fixedTimes = {...bookng.toJSON(),
+        startDate: new Date(bookng.startDate).toLocaleString('en-US', options),
+        endDate: new Date(bookng.endDate).toLocaleString('en-US', options),
+        updatedAt: bookng.updatedAt.toLocaleString('en-US', { timeZone }),
+        createdAt: bookng.createdAt.toLocaleString('en-US', { timeZone })
     };
 
     return res.status(200).json(fixedTimes);
@@ -177,19 +177,19 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
 
 //! Delete booking
 router.delete("/:bookingId", requireAuth, async (req, res) => {
-    const booking = await Booking.findByPk(req.params.bookingId)
+    const bookng = await booking.findByPk(req.params.bookingId)
     const { user } = req
 
-    if (!booking) return res.status(404).json({ message: "Booking couldn't be found" })
+    if (!bookng) return res.status(404).json({ message: "Booking couldn't be found" })
 
-    if (booking.userId !== user.id) return res.status(403).json({ message: "Forbidden" })
+    if (bookng.userId !== user.id) return res.status(403).json({ message: "Forbidden" })
 
-    const startDate = booking.startDate
+    const startDate = bookng.startDate
     const currentDate = new Date()
     console.log(startDate, currentDate)
     if (startDate <= currentDate) return res.status(403).json({ message: "Bookings that have already started can't be deleted" })
 
-    await booking.destroy()
+    await bookng.destroy()
     res.status(200).json({ message: "Successfully deleted" })
 });
 

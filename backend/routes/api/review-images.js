@@ -1,11 +1,11 @@
 const express = require('express')
-const {Review, ReviewImage } = require('../../db/models');
+const {Review, reviewImages } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
 
 router.delete("/:imageId", requireAuth, async (req, res) => {
     const { user } = req
-    const image = await ReviewImage.findByPk(req.params.imageId, {
+    const image = await reviewImages.findByPk(req.params.imageId, {
         include: { model: Review, attributes: ['userId'] }
     })
     if (!image || !image.Review) {
