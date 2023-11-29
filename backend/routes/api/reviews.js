@@ -1,5 +1,5 @@
 const express = require('express')
-const { Spot, Review, User, SpotImage, Booking, ReviewImage } = require('../../db/models');
+const { Spot, Review, User, SpotImage, booking, reviewImages } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -39,7 +39,7 @@ router.get('/current', requireAuth, async (req, res) => {
                     'previewImage'
                 ]
             }, {
-                model: ReviewImage,
+                model: reviewImages,
                 attributes: ['id', 'url']
             }
         ]
@@ -47,13 +47,13 @@ router.get('/current', requireAuth, async (req, res) => {
 
     // conversions*********
     currentUserReviews.forEach((review) => {
-        
+
 
         const spot = review.Spot;
         spot.lat = parseFloat(spot.lat);
         spot.lng = parseFloat(spot.lng);
         spot.price = parseFloat(spot.price);
-        
+
     });
 
     const fixedTimeZones = currentUserReviews.map((review) => ({
@@ -75,8 +75,8 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
     const { user } = req;
     const timeZone = 'PST';
     const { review, stars } = req.body
-    
-    
+
+
     if (!reviews) {
         res.status(404).json({ message: "Review couldn't be found" })
     }
@@ -102,10 +102,10 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
     }
     reviews.review = review
     reviews.stars = stars
-    
 
 
-    
+
+
     await reviews.save()
 
     const fixedTimes = {...reviews.toJSON(),
@@ -140,9 +140,9 @@ router.post('/:reviewId/images', requireAuth , async (req,res) =>{
 
 
     const spot = await Spot.findByPk(currentReview.spotId)
-    
-    
-    const reviewImages = await ReviewImage.findAll({
+
+
+    const reviewsImages = await reviewImages.findAll({
         where: {
             reviewId : currentReview.id
         }
@@ -150,7 +150,7 @@ router.post('/:reviewId/images', requireAuth , async (req,res) =>{
 
     if (preview === true) spot.previewImage = url
 
-    if(reviewImages.length > 9) {
+    if(reviewsImages.length > 9) {
         res.status(403).json({
             message: 'Maximum number of images for this resource reached'
         })
