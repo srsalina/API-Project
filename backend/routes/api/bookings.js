@@ -9,7 +9,7 @@ const router = express.Router()
 //! get all CU bookings
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req
-    const timeZone = 'PST'
+    const timeZone = 'EST'
     const currentBookings = await booking.findAll({
         where: { userId: user.id },
         include: {
@@ -25,7 +25,7 @@ router.get('/current', requireAuth, async (req, res) => {
         spot.price = parseFloat(spot.price);
     })
 
-    const options = { timeZone: 'PST', year: 'numeric', month: '2-digit', day: '2-digit' }
+    const options = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' }
 
     const fixedTimes = currentBookings.map((booking) => ({
         ...booking.toJSON(),
