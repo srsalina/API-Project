@@ -70,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.DECIMAL,
       allowNull:false,
     },
-    averageRating : {
+    avgRating : {
       type: DataTypes.INTEGER
     },
     previewImage: {

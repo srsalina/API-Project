@@ -81,7 +81,7 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
         res.status(404).json({ message: "Review couldn't be found" })
     }
     if (reviews.userId !== user.id) {
-        res.status(400).json({ message: "Forbidden" })
+        res.status(403).json({ message: "Forbidden" })
     }
 
 
@@ -108,9 +108,10 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
 
     await reviews.save()
 
-    const fixedTimes = {...reviews.toJSON(),
-        updatedAt: revs.updatedAt.toLocaleString('en-US', { timeZone }),
-        createdAt: revs.createdAt.toLocaleString('en-US', { timeZone })
+    const fixedTimes = {
+        ...reviews.toJSON(),
+        updatedAt: reviews.updatedAt.toLocaleString('en-US', { timeZone }),
+        createdAt: reviews.createdAt.toLocaleString('en-US', { timeZone })
     }
     res.status(200).json(fixedTimes)
 })
@@ -121,56 +122,58 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
 // * ADD IMAGE TO REVIEW FROM REVIEW ID
 
 router.post('/:reviewId/images', requireAuth , async (req,res) =>{
-    const timeZone = 'PST'
-    const currentReview = await Review.findByPk(req.params.reviewId)
+    const review = await Review.findByPk(req.params.reviewId)
     const { user } = req
+    const timeZone = 'PST'
     const { url, preview } = req.body
 
-    if(!currentReview) {
-        res.status(404),json({
+
+
+    if(!review) {
+        return res.status(404).json({
             message: "Review couldn't be found"
         })
     }
 
-    if(currentReview.userId !== user.id){
-        res.status(400).json({
+    if(review.userId !== user.id){
+        return res.status(403).json({
             message: 'Forbidden'
         })
     }
 
 
-    const spot = await Spot.findByPk(currentReview.spotId)
+    const spot = await Spot.findByPk(review.spotId)
 
 
     const reviewsImages = await reviewImages.findAll({
         where: {
-            reviewId : currentReview.id
+            reviewId : review.id
         }
     })
 
     if (preview === true) spot.previewImage = url
 
     if(reviewsImages.length > 9) {
-        res.status(403).json({
+        return res.status(403).json({
             message: 'Maximum number of images for this resource reached'
         })
     } else {
-        let newImage = await currentReview.createReviewImage({
+        let newImage = await review.createReviewImage({
             url,
             reviewId: req.params.reviewId
         })
 
         newImage.createdAt = newImage.createdAt.toLocaleString('en-US', {timeZone})
 
-        newImage.updatedAt = newRevImg.updatedAt.toLocaleString('en-US', { timeZone })
+        newImage.updatedAt = newImage.updatedAt.toLocaleString('en-US', { timeZone })
 
 
         res.status(200).json({
-            id: newRevImg.id,
-            url: newRevImg.url,
-            reviewId: newRevImg.reviewId,
-            updatedAt: newRevImg.createdAt.toLocaleString('en-US', { timeZone }),
-            createdAt: newRevImg.updatedAt.toLocaleString('en-US', { timeZone })
+            id: newImage.id,
+            url: newImage.url,
+            reviewId: newImage.reviewId,
+            updatedAt: newImage.createdAt.toLocaleString('en-US', { timeZone }),
+            createdAt: newImage.updatedAt.toLocaleString('en-US', { timeZone })
         })
     }
 })

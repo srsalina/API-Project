@@ -95,8 +95,7 @@ router.get("/", queryFilters, async (req, res) => {
             jsonSpotsArray[i].previewImage = jsonSpotsArray[i].SpotImages[0].url;
             delete jsonSpotsArray[i].SpotImages;
         } else {
-            // If no image found, set previewImage to null or an empty string
-            jsonSpotsArray[i].previewImage = `No preview image`; // or jsonSpotsArray[i].previewImage = '';
+            jsonSpotsArray[i].previewImage = `No preview image`;
             delete jsonSpotsArray[i].SpotImages;
         }
 
@@ -465,7 +464,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     })
 
     let errArray = []
-    if (!review) errors.push("Review text is required")
+    if (!review) errArray.push("Review text is required")
     if (req.body.stars > 5 || req.body.stars < 1 || !stars) errArray.push("Stars must be an integer from 1 to 5")
     if (errArray.length) {
         res.status(400).json({
