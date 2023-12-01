@@ -14,7 +14,7 @@ const router = express.Router()
 
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req;
-    timeZone = 'PST';
+    timeZone = 'EST';
     const currentUserReviews = await Review.findAll({
         where: {
             userId: user.id
@@ -73,7 +73,7 @@ router.get('/current', requireAuth, async (req, res) => {
 router.put('/:reviewId', requireAuth, async (req, res, next) => {
     const reviews = await Review.findByPk(req.params.reviewId)
     const { user } = req;
-    const timeZone = 'PST';
+    const timeZone = 'EST';
     const { review, stars } = req.body
 
 
@@ -124,7 +124,7 @@ router.put('/:reviewId', requireAuth, async (req, res, next) => {
 router.post('/:reviewId/images', requireAuth , async (req,res) =>{
     const review = await Review.findByPk(req.params.reviewId)
     const { user } = req
-    const timeZone = 'PST'
+    const timeZone = 'EST'
     const { url, preview } = req.body
 
 
