@@ -564,7 +564,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const userId = user.id;
 
     const spot = await Spot.findByPk(req.params.spotId);
-    const requestBody = req.body;
+    const body = req.body;
 
     if (!spot) {
         return res.status(404).json(
@@ -586,8 +586,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         }
     });
 
-    const newStartDate = new Date(requestBody.startDate);
-    const newEndDate = new Date(requestBody.endDate);
+    const newStartDate = new Date(body.startDate);
+    const newEndDate = new Date(body.endDate);
 
     for (let currBooking of allBookings) {
         const startDate = new Date(currBooking.startDate);
@@ -697,8 +697,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         });
     }
 
-    requestBody.userId = userId;
-    requestBody.spotId = spot.id;
+    body.userId = userId;
+    body.spotId = spot.id;
     const options = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' }
     const newBooking = await booking.create(body);
     await newBooking.save()

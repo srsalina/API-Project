@@ -46,7 +46,7 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body;
     const { bookingId } = req.params;
     const { user } = req;
-    const timeZone = 'PST';
+    const timeZone = 'EST';
 
 
     const newStartDate = new Date(startDate).getTime();
@@ -159,8 +159,9 @@ router.put("/:bookingId", requireAuth, async (req, res) => {
     bookng.endDate = newEndDate;
     await bookng.save();
 
-    const options = { timeZone: 'PST', year: 'numeric', month: '2-digit', day: '2-digit' };
-    const fixedTimes = {...bookng.toJSON(),
+    const options = { timeZone: 'GMT', year: 'numeric', month: '2-digit', day: '2-digit' };
+    const fixedTimes = {
+        ...bookng.toJSON(),
         startDate: new Date(bookng.startDate).toLocaleString('en-US', options),
         endDate: new Date(bookng.endDate).toLocaleString('en-US', options),
         updatedAt: bookng.updatedAt.toLocaleString('en-US', { timeZone }),
