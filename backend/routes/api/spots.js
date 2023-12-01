@@ -233,7 +233,7 @@ router.get('/:spotId', async (req, res) => {
 
     spot.SpotImages = spotImages
     spot.Owner = owner
-
+    delete spot.previewImage
     res.status(200).json(spot)
 })
 
