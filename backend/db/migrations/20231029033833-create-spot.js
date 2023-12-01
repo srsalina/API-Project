@@ -56,7 +56,7 @@ module.exports = {
         type: Sequelize.DECIMAL,
         allowNull:false
       },
-      averageRating: {
+      avgRating: {
         type: Sequelize.INTEGER,
       },
       previewImage: {
