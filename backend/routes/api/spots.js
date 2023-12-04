@@ -524,10 +524,21 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
             include: { model: User, attributes: ['id', 'firstName', 'lastName'] }
         })
         const bookingsArr = allBookings.map(booking => ({
+            User: {
+                id: booking.User.id,
+                firstName: booking.User.firstName,
+                lastName: booking.User.lastName
+            },
+            id: booking.id,
             spotId: booking.spotId,
+            userId: booking.userId,
             startDate: booking.startDate.toLocaleDateString(),
-            endDate: booking.endDate.toLocaleDateString()
+            endDate: booking.endDate.toLocaleDateString(),
+            createdAt: booking.createdAt,
+            updatedAt:booking.updatedAt
         }));
+
+
 
         return res.status(200).json(
             {
