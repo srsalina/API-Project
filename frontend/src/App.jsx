@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, BrowserRouter } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 
@@ -28,14 +28,38 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Welcome!</h1>
+        element: <>hi</>
+      },
+      {
+        path: '/spots/:spotId',
+        element: <>hi</>
+      },
+      {
+        path: '/spots/new',
+        element: <>hi</>
+      },
+      {
+        path: '/spots/:spotId/edit',
+        element: <>hi</>
+      },
+      {
+        path: '/spots/current',
+        element: <>hi</>
       }
     ]
   }
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return(
+  <>
+  <BrowserRouter>
+    <Navigation/>
+  </BrowserRouter>
+  <RouterProvider router={router} />;
+  </>
+
+  )
 }
 
 export default App;
