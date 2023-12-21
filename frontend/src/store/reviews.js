@@ -1,4 +1,4 @@
-
+import { csrfFetch } from "./csrf";
 
 const GET_SPOT_REVS = "reviews/getReviews"
 const CREATE_REVIEW = "reviews/createReview"
@@ -33,8 +33,8 @@ const deleteReview = (payload) => {
 //*******************************************************************  THUNKZ
 
 
-export const thunkFetchReviews = (spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/reviews`, {
+export const thunkGetReviews = (spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: "GET"
     })
     if (res.ok) {
@@ -49,8 +49,8 @@ export const thunkFetchReviews = (spotId) => async (dispatch) => {
 
 
 
-export const thunkCreateNewReview = (review, spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/reviews`, {
+export const thunkCreateReview = (review, spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(review)
@@ -65,8 +65,8 @@ export const thunkCreateNewReview = (review, spotId) => async (dispatch) => {
     }
 }
 
-export const thunkDeleteExistingReview = (reviewId) => async (dispatch) => {
-    const res = await fetch(`/api/reviews/${reviewId}`, {
+export const thunkDeleteReview = (reviewId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "DELETE",
         headers : {"Content-Type":"application/json"}
     })

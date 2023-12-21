@@ -1,4 +1,4 @@
-
+import { csrfFetch } from "./csrf";
 
 const GET_ALL_SPOTS = "spots/getAllSpots";
 const GET_SPOT_DETAILS = "spots/getSpotDetails";
@@ -54,7 +54,7 @@ const deleteSpot = (payload) => {
 //***************************************************************  thunks
 
 export const thunkGetAllSpots = () => async (dispatch) => {
-    const res = await fetch("/api/spots", {
+    const res = await csrfFetch("/api/spots", {
         method: "GET"
     })
     if(res.ok){
@@ -70,7 +70,7 @@ export const thunkGetAllSpots = () => async (dispatch) => {
 
 
 export const thunkSpotDetails = (spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}`, {
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: "GET"
     })
     if(res.ok){
@@ -86,8 +86,8 @@ export const thunkSpotDetails = (spotId) => async (dispatch) => {
 
 
 
-export const thunkCreateNewSpot = (payload) => async (dispatch) => {
-    const res = await fetch("/api/spots", {
+export const thunkCreateSpot = (payload) => async (dispatch) => {
+    const res = await csrfFetch("/api/spots", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -106,7 +106,7 @@ export const thunkCreateNewSpot = (payload) => async (dispatch) => {
 }
 
 export const thunkNewSpotImage = (img, spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/images`, {
+    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
         method: "POST",
         body: JSON.stringify(img),
         headers: {"Content-Type": "application/json"}
@@ -122,7 +122,7 @@ export const thunkNewSpotImage = (img, spotId) => async (dispatch) => {
 }
 
 export const thunkSpotUpdate = (updatedDetails, spotId) => async (dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}`, {
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: "PUT",
         body: JSON.stringify(updatedDetails),
         headers: { "Content-Type": "application/json"}
@@ -138,7 +138,7 @@ export const thunkSpotUpdate = (updatedDetails, spotId) => async (dispatch) => {
 }
 
 export const thunkDeleteCurrSpot = (spotId) => async (dispatch) => { //! DELETING FROM HERE WILL NOT DELETE FROM DATABASE
-    const res = await fetch(`/api/spots/${spotId}`, {
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: "DELETE",
         headers: {"Content-Type": "application/json"}
     })
