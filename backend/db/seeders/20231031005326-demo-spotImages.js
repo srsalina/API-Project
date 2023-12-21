@@ -11,18 +11,18 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'spotimage1.com',
-        preview: false
+        url: 'https://nypost.com/wp-content/uploads/sites/2/2022/03/Arkup-67.jpg',
+        preview: true
       },
       {
         spotId: 2,
-        url: 'spotimage2.com',
-        preview: false
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-11818704/original/d7279902-a71b-4fbc-a711-3172286ab458.jpeg?im_w=1200',
+        preview: true
       },
       {
         spotId: 3,
-        url: 'spotimage3.com',
-        preview: false
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-645734927755358154/original/ee26e961-bd79-4423-8791-df80f8c7382c.jpeg?im_w=1200',
+        preview: true
       }
     ], { validate: true })
   },
