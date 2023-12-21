@@ -17,7 +17,7 @@ module.exports = {
 
         ownerId: 1,
         address: "1234 Avenue Lane",
-        city: "Burgertown",
+        city: "Catalina Island",
         state: "California",
         country: "USA",
         lat: 23.456453,
@@ -30,8 +30,8 @@ module.exports = {
       {
         ownerId: 2,
         address: "5678 Turnaround Lane",
-        city: "Spookville",
-        state: "Georgia",
+        city: "West Keys",
+        state: "Florida",
         country: "USA",
         lat: 34.65763,
         lng: 23.35521,
