@@ -1,0 +1,74 @@
+.imagePreview {
+    border-radius: 10px;
+    width: 230px;
+    height: 200px;
+    /* border: 2px solid yellow */
+}
+
+.pageReturn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    font-size: 12px;
+    margin: auto;
+    /* border: 2px solid red; */
+}
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0px 5px 5px 5px;
+    max-width: 1000px;
+    /* border: 2px solid green; */
+    gap: 22px;
+}
+
+.location {
+    text-decoration: none;
+    padding-left: 5px;
+    width: 130px;
+    height: 30px
+}
+
+.price {
+    padding-left: 5px;
+}
+
+.locaPrice {
+    display: inline-flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: sans-serif;
+    width: 130px;
+    height: 110px;
+    color: black
+}
+
+.reviewSection {
+    display: inline-flex;
+    flex-direction: column;
+    padding-left: 65px;
+    text-decoration: none;
+    color: black
+}
+
+.reviews {
+    display: inline-flex;
+}
+
+.fa-solid.fa-star {
+    padding-top: 12px
+}
+
+.spotsContainer {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+.spotContainer:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+    border-radius: 10px;
+}
