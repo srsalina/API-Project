@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { useState } from "react";
 import { thunkDeleteCurrSpot } from "../../store/spots";
 import './DeleteSpot.css'
 
