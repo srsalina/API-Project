@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import HomePage from './components/Home/HomePage';
 import SpotDetails from './components/SpotDetails/SpotDetails';
+import ManageSpots from './components/ManageSpots/ManageSpots';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/spots/current',
-        element: <>hi</>
+        element: <ManageSpots/>
       }
     ]
   }
