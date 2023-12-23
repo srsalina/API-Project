@@ -5,43 +5,97 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import { useEffect, useRef, useState } from 'react';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
+
+  const [showMenu, setShowMenu] = useState(false);
+
+
+  const ref = useRef()
+
+
+  function activeMenu(e) {
+    e.stopPropagation();
+    setShowMenu(!showMenu)
+  }
+
+  useEffect(() => {
+    if (!showMenu) return
+
+    function closeMenu(e) {
+      if (ref.current.contains(e.target)) {
+        setShowMenu(true)
+      }
+    }
+
+    document.addEventListener('click', closeMenu)
+
+    return function () {
+      document.removeEventListener('click', closeMenu)
+    }
+
+  }, [showMenu])
+
+  let listClassName = "drop" + (showMenu ? '' : 'hidden')
+
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <li>
+      <>
+        <NavLink to='/spots/new' className='createSpot'>
+          Create A Spot
+        </NavLink>
         <ProfileButton user={sessionUser} />
-      </li>
+      </>
     );
   } else {
     sessionLinks = (
-      <>
-      <li>
-        <OpenModalButton
-          buttonText="Log In"
-          modalComponent={<LoginFormModal />}
-        />
-      </li>
-      <li>
-        <OpenModalButton
-          buttonText="Sign Up"
-          modalComponent={<SignupFormModal />}
-        />
-      </li>
 
-      </>
+      <ul>
+
+        <button onClick={activeMenu} className='menu'>
+          <i className="fa-solid fa-bars"></i>
+          <i className="fa-regular fa-user"></i>
+        </button>
+
+
+        <ul className={listClassName} ref={ref}>
+          <div className='buttoncontainer'>
+            <OpenModalButton
+              buttonText="Log In"
+              className='login'
+              modalComponent={<LoginFormModal />}
+            />
+
+            <OpenModalButton
+              buttonText="Sign Up"
+              className='signup'
+              modalComponent={<SignupFormModal />}
+            />
+
+          </div>
+        </ul>
+
+      </ul>
+
     );
   }
 
   return (
-    <ul>
+    <ul className='navBar'>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className='home'>
+          Home
+        </NavLink>
       </li>
-      {isLoaded && sessionLinks}
+      <div className='spotmenublob'>
+
+        {isLoaded && sessionLinks}
+      </div>
     </ul>
   );
 }

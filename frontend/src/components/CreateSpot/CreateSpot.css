@@ -1,0 +1,78 @@
+.createForm {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+.udtHeader {
+    display: flex;
+
+}
+
+#inputCreate {
+    display: flex;
+    width: 350px;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 3px;
+    background-color: #D6E8EC;
+}
+
+.descriptionUpdate {
+    height: 180px
+}
+
+.priceInput {
+    display: inline-flex;
+    width: 340px !important;
+    margin-left: 4px;
+}
+
+.priceDiv {
+    display: inline-flex;
+    align-items: center;
+}
+
+.desc {
+    height: 180px
+}
+
+.locaUpdate {
+    padding-bottom: 35px;
+    border-bottom: 2px solid black;
+}
+
+.error {
+    color: red;
+    font-family: sans-serif;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.titleAndErrors {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cas {
+    display: flex;
+    width: 350px;
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 5px;
+    padding: 12px 0px 12px 0px;
+    color: white;
+    background-color: #FF5A5A;
+    box-shadow: 2px 2px black;
+    border: 3px solid black;
+}
+
+.cas:hover {
+    cursor: pointer;
+}
