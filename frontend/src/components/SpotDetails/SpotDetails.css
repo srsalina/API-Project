@@ -1,0 +1,167 @@
+#spotInfoDisplay {
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    margin: auto;
+    flex-direction: column;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.spotName {
+    display: flex;
+}
+
+.otherImgs {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 300px;
+    width: fit-content
+}
+
+.otherImgs2 {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 300px;
+    width: fit-content
+        /* margin-left: 10px */
+}
+
+.extras {
+    display: flex;
+    /* border: 2px solid black; */
+    border-radius: 2px;
+}
+
+.imgs {
+    display: flex;
+}
+
+.mainImg {
+    width: 500px;
+    height: 310px;
+    border-radius: 2px;
+    border: 2px solid black;
+    margin-top: 3px;
+}
+
+#additionalImg {
+    display: flex;
+    width: 240px;
+    height: 150px
+}
+
+.reserve {
+    display: inline-flex;
+    border: 3px solid black;
+    border-radius: 20px;
+    flex-direction: column;
+    width: 350px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    height: fit-content;
+    background-color: white;
+}
+
+.notButton {
+    display: flex;
+}
+
+.reviewInfo {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid yellow; */
+}
+
+.resInfo {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    /* border: 2px solid green; */
+    margin: 0px 20px 0px 20px;
+    align-items: center;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.reviewInfo .fa-solid.fa-star {
+    margin-top: 5px;
+}
+
+.numRevs {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 1px; */
+    padding-left: 10px;
+}
+
+.resButton {
+    display: flex;
+    width: 250px;
+    margin-left: 50px;
+    cursor: pointer;
+    justify-content: center;
+    color: white;
+    box-shadow: 2px 2px black;
+    border: 3px solid black;
+    padding: 12px 0px 12px 0px;
+    background-color: #FF5A5A;
+}
+
+.extra1 {
+    border: 2px solid black;
+    margin: 3px 3px 3px 3px;
+}
+
+.extra2 {
+    border: 2px solid black;
+    margin: 3px 3px 3px 3px;
+}
+
+.extra3 {
+    border: 2px solid black;
+    margin: 3px 3px 3px 3px;
+}
+
+.extra4 {
+    border: 2px solid black;
+    margin: 3px 3px 3px 3px;
+}
+
+.textAndButton {
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.description {
+    /* border: 1px solid orange; */
+    padding-right: 25px;
+    margin-top: -10px;
+    width: 620px
+}
+
+/* .location {
+    margin-top: -16px;
+    padding-bottom: 15px;
+} */
+
+.details {
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    margin: none;
+}
+
+.loca {
+    width: 600px;
+    margin-top: -16px;
+    padding-bottom: 15px;
+}
+
+.dot {
+    display: inline-flex;
+    align-items: center;
+    padding-left: 15px;
+}
