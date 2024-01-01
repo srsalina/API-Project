@@ -27,8 +27,8 @@ function Navigation({ isLoaded }) {
     if (!showMenu) return
 
     function closeMenu(e) {
-      if (ref.current.contains(e.target)) {
-        setShowMenu(true)
+      if (!ref.current.contains(e.target)) {
+        setShowMenu(false)
       }
     }
 
@@ -40,7 +40,7 @@ function Navigation({ isLoaded }) {
 
   }, [showMenu])
 
-  let listClassName = "dropDown" + (showMenu ? '' : 'hidden')
+  const listClassName = "dropDown" + (showMenu ? '' : 'hidden')
 
 
   let sessionLinks;
