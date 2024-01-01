@@ -20,7 +20,7 @@ export default function ManageSpots() {
         return null;
       }
     dispatch(thunkGetAllSpots());
-  }, [dispatch]);
+  }, [dispatch,spots]);
 
   const userSpots = spots.filter((spot) => spot.ownerId === user.id);
 
@@ -52,8 +52,8 @@ export default function ManageSpots() {
         </div>
       </NavLink>
       <div className="updateDelete">
-        <button className="updateASpot">
-          <NavLink to={`/spots/${spot.id}/edit`} className="updateNavLink">
+        <button className="updateSpot">
+          <NavLink to={`/spots/${spot.id}/edit`} className="updateNav">
             Update
           </NavLink>
         </button>
@@ -68,14 +68,14 @@ export default function ManageSpots() {
   ));
 
   return (
-    <div>
-      <div className="create">
+    <div className="manageBox">
+      <div className="createHeader">
         <h1 className="manageHeader">Manage Spots</h1>
         <NavLink to="/spots/new" className="spotManage">
           Create A Spot
         </NavLink>
       </div>
-      <div className="returnPage">
+      <div className="return">
         <div className="manage">{spotsDisplay}</div>
       </div>
     </div>

@@ -22,11 +22,11 @@ export default function HomePage(){
                         <img src={spot.previewImage} className='imagePreview' />
                     </div>
                 </div>
-                <div className='locaPrice'>
+                <div className='localPrice'>
                     <p className='location'>{spot.city}, {spot.state}</p>
                     <p className='price'>${spot.price}.00 night</p>
                 </div>
-                <div className='reviewSection'>
+                <div className='reviewsSection'>
                     <div className='reviews'>
                         < i className='fa-solid fa-star'></i>{typeof spot.avgRating === 'number' ? (<p>{parseFloat(spot.avgRating).toFixed(1)}</p>) : (<p>New</p>)}
                     </div>
@@ -36,8 +36,8 @@ export default function HomePage(){
     ))
 
     return(
-        <div>
-            <div>
+        <div className="page">
+            <div className="homeLanding">
                 {homePageContainer}
             </div>
         </div>

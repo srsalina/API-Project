@@ -59,7 +59,7 @@ function Reviews({ spotId }) {
     }
 
 
-    console.log(currentReviews)
+    // console.log(currentReviews)
 
     //***************************************************  Return if there are no current reviews
     if(!currentReviews.length){
