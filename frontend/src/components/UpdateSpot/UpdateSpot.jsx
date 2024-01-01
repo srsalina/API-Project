@@ -27,7 +27,7 @@ function UpdateSpot() {
     const [imgFour, setImgFour] = useState(spot.imgFour || "")
     const [imgFive, setImgFive] = useState(spot.imgFive || "")
     const [errors, setErrors] = useState([])
-    const allowedExtentions = [".jpg", ".jpeg", ".png"]
+    const validImage = [".jpg", ".jpeg", ".png"]
     const errs = []
     const imgs = []
     if (prevImg) imgs.push(prevImg)
@@ -61,12 +61,11 @@ function UpdateSpot() {
         setImgFive(spot.imgFive || "")
     }, [spot])
 
-    // if (!spot) return null
-    // if (!spot.SpotImages) return null
+
 
     function validateInputs() {
-        // e.preventDefault()
-        console.log("Validate is running")
+
+        // console.log("Validate is running")
         if (!country) errs.push("Country is required")
         if (!address) errs.push("Address is required")
         if (!city) errs.push("City is required")
@@ -77,11 +76,13 @@ function UpdateSpot() {
         if (!name) errs.push("Title is required")
         if (!price) errs.push("Price is required")
         if (!prevImg) errs.push("Preview image is required")
+
+
         for (let i = 0; i < imgs.length; i++) {
             const lowerImg = imgs[i].toLowerCase()
             let validExt = false
-            for (let j = 0; j < allowedExtentions.length; j++) {
-                const ext = allowedExtentions[j]
+            for (let j = 0; j < validImage.length; j++) {
+                const ext = validImage[j]
                 if (lowerImg.endsWith(ext)) {
                     validExt = true;
                     break
@@ -89,7 +90,7 @@ function UpdateSpot() {
             }
             if (!validExt) errs.push("Image must have a valid extension")
         }
-        console.log(errs)
+        // console.log(errs)
         setErrors(errs)
         // console.log(errors)
         // return errors.length === 0
@@ -111,7 +112,7 @@ function UpdateSpot() {
                 price,
             }
 
-            const res = await dispatch(thunkSpotUpdate(updatedSpot, spot.id))
+            const res = dispatch(thunkSpotUpdate(updatedSpot, spot.id))
 
             if (res) {
                 navigate(`/spots/${res.id}`)

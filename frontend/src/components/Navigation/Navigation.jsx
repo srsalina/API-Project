@@ -5,6 +5,7 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import '../OpenModalButton/OpenModalButton.css'
 import { useEffect, useRef, useState } from 'react';
 
 function Navigation({ isLoaded }) {
@@ -39,7 +40,7 @@ function Navigation({ isLoaded }) {
 
   }, [showMenu])
 
-  let listClassName = "drop" + (showMenu ? '' : 'hidden')
+  let listClassName = "dropDown" + (showMenu ? '' : 'hidden')
 
 
   let sessionLinks;
@@ -64,7 +65,7 @@ function Navigation({ isLoaded }) {
 
 
         <ul className={listClassName} ref={ref}>
-          <div className='buttoncontainer'>
+          <div className='buttonContainer'>
             <OpenModalButton
               buttonText="Log In"
               className='login'
@@ -87,15 +88,17 @@ function Navigation({ isLoaded }) {
 
   return (
     <ul className='navBar'>
-      <li>
-        <NavLink to="/" className='home'>
+      <>
+        <NavLink to="/" className='toHome'>
           Home
         </NavLink>
-      </li>
+      </>
+
       <div className='spotmenublob'>
 
         {isLoaded && sessionLinks}
       </div>
+
     </ul>
   );
 }

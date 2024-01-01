@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../context/Modal"
 import { thunkCreateReview, thunkGetReviews } from "../../store/reviews"
-
 import './CreateReview.css'
 
 
@@ -31,7 +30,7 @@ export default function CreateReview({spot,user}){
         closeModal()
         // reset reviewText and stars
         setReviewText('')
-        console.log(reviewText)
+        // console.log(reviewText)
         setStars(0)
 
         return res

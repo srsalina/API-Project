@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
           <ul className='textEm'>{user.email}</ul>
           <ul className='manageSpots'> <NavLink to='/spots/current' onClick={toggleMenu} className='manageNav'>Manage Spots</NavLink></ul>
           <ul className='loButton'>
-            <button onClick={logout} className='button'>Log Out</button>
+            <button onClick={logout} className='logoutButton'>Log Out</button>
           </ul>
         </ul>
       </ul>
