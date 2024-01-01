@@ -13,14 +13,14 @@ function DeleteSpot({ spot }) {
     const { closeModal } = useModal()
     const [spotExists, setSpotExists] = useState(true)
 
-    const delSpot = (e) => {
+    function spotDelete(e){
         e.preventDefault()
         dispatch(thunkDeleteCurrSpot(spot.id))
         closeModal()
         setSpotExists(false)
     }
 
-    const cancelDel = (e) => {
+    function cancel(e){
         e.preventDefault()
         closeModal()
     }
@@ -28,11 +28,11 @@ function DeleteSpot({ spot }) {
     return (
         <div>
             {spotExists && (
-                <div>
-                    <h2>Confirm Delete</h2>
-                    <p>Are you sure you want to remove this spot?</p>
-                    <button onClick={delSpot}>Yes (Delete Spot)</button>
-                    <button onClick={cancelDel}>No (Keep Spot)</button>
+                <div className="deleteContainer">
+                    <h2 className="confirmHeader">Confirm Delete</h2>
+                    <p className="confirmationText">Are you sure you want to remove this spot?</p>
+                    <button className="deleteButton" onClick={spotDelete}>Yes (Delete Spot)</button>
+                    <button className="cancelButton" onClick={cancel}>No (Keep Spot)</button>
                 </div>
             )}
         </div>

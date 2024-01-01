@@ -1,4 +1,4 @@
-#spotInfoDisplay {
+#spotDetails {
     display: flex;
     justify-content: center;
     max-width: 1000px;
@@ -12,21 +12,16 @@
     display: flex;
 }
 
-.otherImgs {
+.imgs {
     display: flex;
-    flex-direction: column;
-    /* border: 1px solid red; */
-    height: 300px;
-    width: fit-content
 }
 
-.otherImgs2 {
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid red; */
-    height: 300px;
-    width: fit-content
-        /* margin-left: 10px */
+.mainImage {
+    width: 500px;
+    height: 310px;
+    border-radius: 2px;
+    border: 2px solid black;
+    margin-top: 3px;
 }
 
 .extras {
@@ -35,24 +30,40 @@
     border-radius: 2px;
 }
 
-.imgs {
+.otherImages {
     display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 300px;
+    width: fit-content
 }
 
-.mainImg {
-    width: 500px;
-    height: 310px;
-    border-radius: 2px;
-    border: 2px solid black;
-    margin-top: 3px;
-}
-
-#additionalImg {
+.moreImages {
     display: flex;
-    width: 240px;
-    height: 150px
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 300px;
+    width: fit-content
+    /* margin-left: 10px */
 }
 
+.text-button {
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.details {
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    margin: none;
+}
+.description {
+    /* border: 1px solid orange; */
+    padding-right: 25px;
+    margin-top: -10px;
+    width: 620px
+}
 .reserve {
     display: inline-flex;
     border: 3px solid black;
@@ -69,13 +80,7 @@
     display: flex;
 }
 
-.reviewInfo {
-    display: flex;
-    flex-direction: row;
-    /* border: 1px solid yellow; */
-}
-
-.resInfo {
+.reservationInfo {
     display: flex;
     width: 350px;
     justify-content: space-between;
@@ -85,6 +90,21 @@
     font-weight: bold;
     font-family: sans-serif;
 }
+
+#additionalImg {
+    display: flex;
+    width: 240px;
+    height: 150px
+}
+
+
+
+.reviewInfo {
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid yellow; */
+}
+
 
 .reviewInfo .fa-solid.fa-star {
     margin-top: 5px;
@@ -97,7 +117,7 @@
     padding-left: 10px;
 }
 
-.resButton {
+.reserveButton {
     display: flex;
     width: 250px;
     margin-left: 50px;
@@ -130,31 +150,15 @@
     margin: 3px 3px 3px 3px;
 }
 
-.textAndButton {
-    display: flex;
-    border-bottom: 2px solid black;
-}
 
-.description {
-    /* border: 1px solid orange; */
-    padding-right: 25px;
-    margin-top: -10px;
-    width: 620px
-}
 
 /* .location {
     margin-top: -16px;
     padding-bottom: 15px;
 } */
 
-.details {
-    /* border: 1px solid yellow; */
-    display: flex;
-    flex-direction: column;
-    margin: none;
-}
 
-.loca {
+.location {
     width: 600px;
     margin-top: -16px;
     padding-bottom: 15px;

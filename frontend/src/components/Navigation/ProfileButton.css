@@ -1,4 +1,4 @@
-.profile-dropdown.hidden {
+.dropdown.hidden {
     display: none;
 }
 
@@ -26,7 +26,7 @@
     padding-right: 5px
 }
 
-.button {
+.logoutButton {
     display: flex;
     background-color: white;
     border: 1px solid black
@@ -50,10 +50,10 @@
     padding-left: 0px;
 }
 
-.buttoncontainer {
+/* .buttoncontainer {
     padding: 5px 5px 5px 5px;
     border-radius: 10px;
-}
+} */
 
 .manageNav {
     text-decoration: none;
