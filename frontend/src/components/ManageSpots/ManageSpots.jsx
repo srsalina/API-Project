@@ -11,20 +11,19 @@ export default function ManageSpots() {
 
   const spots = useSelector((state) => state.spots.allSpots.Spots);
   const user = useSelector((state) => state.session.user);
-  console.log('spots: ',spots)
+  console.log('spots: ', spots)
 
-
-  if (!spots) {
-    return null;
-  }
 
   useEffect(() => {
     dispatch(thunkGetAllSpots());
   }, [dispatch]);
 
+  if (!spots) {
+    return null;
+  }
   const userSpots = spots.filter((spot) => spot.ownerId === user.id);
 
-//   console.log(userSpots);
+  //   console.log(userSpots);
 
   const spotsDisplay = userSpots?.map((spot) => (
     <div key={spot?.id} className="spotsContainer">
@@ -57,7 +56,7 @@ export default function ManageSpots() {
             Update
           </NavLink>
         </button>
-        <div className="deleteButton">
+        <div className="deleteButton2">
           <OpenModalButton
             buttonText={"Delete"}
             modalComponent={<DeleteSpot spot={spot} />}
@@ -79,5 +78,5 @@ export default function ManageSpots() {
         <div className="manage">{spotsDisplay}</div>
       </div>
     </div>
-  );
+  )
 }
