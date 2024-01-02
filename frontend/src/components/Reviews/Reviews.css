@@ -1,6 +1,5 @@
-.reviewContainer {
-    border: 3px solid purple
-}
+
+
 
 .reviewHeader {
     /* outline: 3px solid red; */
@@ -8,11 +7,14 @@
     align-content: center;
     align-items: center;
     height: 40px;
+    padding-right: 20px;
 }
+
 
 .revHeader .fa-solid.fa-star {
     padding-top: 0px;
 }
+
 
 .reviewLabel {
     font-family: sans-serif;
@@ -20,6 +22,7 @@
     font-size: 18px;
     padding-top: 2px;
 }
+
 
 /* .button {
     border: 1px solid black;
@@ -31,30 +34,47 @@
     color: white;
 } */
 
+
 .avgRate {
     padding-right: 8px;
     font-weight: bold;
 }
+
 
 .reviewsNumber {
     padding-left: 8px;
     font-weight: bold;
     gap: 10px
 }
+
+
 .reviewAmount {
     padding-left: 5px;
     font-weight: bold;
 }
 
+
 .singleReview {
     /* outline: 2px solid yellow; */
     margin-bottom: 20px;
     font-family: sans-serif;
+    border: 1px solid gray;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 8px 8px 8px 8px
 }
+
+
+.reviewText {
+    border: 1px solid black
+}
+
+
 .userDisplay {
     font-weight: bold;
     font-size: 20px;
 }
+
 
 .date {
     display: inline-flex;
@@ -67,9 +87,15 @@
 
 
 
+
+
+
+
+
 .reviewText {
     font-size: 16px;
 }
+
 
 /* .firstRev {
     font-family: sans-serif;

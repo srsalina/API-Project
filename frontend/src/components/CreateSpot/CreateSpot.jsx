@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { thunkCreateSpot, thunkGetAllSpots, thunkNewSpotImage, thunkSpotDetails } from "../../store/spots"
 import './CreateSpot.css'
 
+
 function CreateASpot() {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user)
     const navigate = useNavigate()
+
+
+
 
 
 
@@ -28,9 +32,13 @@ function CreateASpot() {
     const [errors, setErrors] = useState([])
 
 
+
+
     const imageExtensions = [".jpg", ".jpeg", ".png"]
     const errorArray = []
     const imageLinkArray = []
+
+
 
 
     if (prevImg) imageLinkArray.push(prevImg)
@@ -39,14 +47,18 @@ function CreateASpot() {
     if (imgFour) imageLinkArray.push(imgFour)
     if (imgFive) imageLinkArray.push(imgFive)
 
-    console.log("images array: ",imageLinkArray)
+
+    console.log("images array: ", imageLinkArray)
+
 
     useEffect(() => {
         dispatch(thunkGetAllSpots())
     }, [dispatch, user])
 
+
     function validateInputs() {
-        
+
+
         console.log("Validate is running")
         if (!country) errorArray.push("Country is required")
         if (!address) errorArray.push("Address is required")
@@ -60,12 +72,17 @@ function CreateASpot() {
         if (!prevImg) errorArray.push("Preview image is required")
 
 
+
+
         //! object did not work
-        
+
+
+
 
         for (let i = 0; i < imageLinkArray.length; i++) {
             const image = imageLinkArray[i].toLowerCase()
             let isValidExtension = false
+
 
             for (let j = 0; j < imageExtensions.length; j++) {
                 const extension = imageExtensions[j]
@@ -78,15 +95,22 @@ function CreateASpot() {
         }
         setErrors(errorArray)
         // console.log(errors)
-        
+
+
     }
 
-    async function submitHandler(e){
+
+    async function submitHandler(e) {
         e.preventDefault()
 
 
+
+
         console.log("handle submit is running")
-        
+        const previewImg = {
+            url: prevImg,
+            preview: true
+        }
         const spot = {
             ownerId: user.id,
             country,
@@ -97,16 +121,21 @@ function CreateASpot() {
             lng,
             description,
             name,
-            price
+            price,
         }
+
 
         console.log("spot: ", spot)
 
 
-        const previewImg = {
-            url: prevImg,
-            preview: true
-        }
+
+
+
+
+
+
+
+
 
 
 
@@ -116,12 +145,17 @@ function CreateASpot() {
             console.log("no response yet")
 
 
-            const res = dispatch(thunkCreateSpot(spot))
+
+
+            const res = await dispatch(thunkCreateSpot(spot))
+
 
             console.log("inside if statement")
-            if (res) dispatch(thunkNewSpotImage(previewImg, res.id))
+            dispatch(thunkNewSpotImage(previewImg, res.id))
+
 
             console.log("res", res)
+
 
             if (imgTwo) {
                 const newImg = {
@@ -131,6 +165,7 @@ function CreateASpot() {
                 dispatch(thunkNewSpotImage(newImg, res.id))
             }
 
+
             if (imgThree) {
                 const newImg = {
                     url: imgThree,
@@ -138,6 +173,7 @@ function CreateASpot() {
                 }
                 dispatch(thunkNewSpotImage(newImg, res.id))
             }
+
 
             if (imgFour) {
                 const newImg = {
@@ -154,11 +190,14 @@ function CreateASpot() {
                 dispatch(thunkNewSpotImage(newImg, res.id))
             }
 
+
             // console.log("Spot post imageLinkArray: ", spot)
             // console.log("prenav")
 
+
             dispatch(thunkSpotDetails(res.id))
             navigate(`/spots/${res.id}`)
+
 
             setCountry('')
             setAddress('')
@@ -175,8 +214,10 @@ function CreateASpot() {
             setImgFour('')
             setImgFive('')
 
+
         }
     }
+
 
     return (
         <div className='formContainer'>
@@ -202,6 +243,7 @@ function CreateASpot() {
                             required
                         ></input>
 
+
                     </label>
                     <label>
                         <div className='titleAndErrors'>
@@ -216,6 +258,7 @@ function CreateASpot() {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         ></input>
+
 
                     </label>
                     <label className="citystate">
@@ -243,6 +286,7 @@ function CreateASpot() {
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                         ></input>
+
 
                     </label>
                     <label className="latlng">
@@ -378,6 +422,8 @@ function CreateASpot() {
         </div>
     )
 
+
 }
+
 
 export default CreateASpot

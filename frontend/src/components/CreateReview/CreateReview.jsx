@@ -5,27 +5,35 @@ import { thunkCreateReview, thunkGetReviews } from "../../store/reviews"
 import './CreateReview.css'
 
 
-export default function CreateReview({spot,user}){
+
+
+export default function CreateReview({ spot, user }) {
     const dispatch = useDispatch()
     const spotId = useSelector((state) => state.spots.currSpot.id)
+
 
     const [reviewText, setReviewText] = useState('')
     const [stars, setStars] = useState('')
 
-    const {closeModal } = useModal()
+
+    const { closeModal } = useModal()
 
 
-    async function submitHandler(){
+
+
+    async function submitHandler() {
+
 
         const newReview = {
-            userId : user.id,
+            userId: user.id,
             spotId: spot.id,
             review: reviewText,
             stars
         }
 
-        const res = dispatch(thunkCreateReview(newReview, spotId))
-        dispatch(thunkGetReviews(spotId))
+
+        const res = await dispatch(thunkCreateReview(newReview, spotId))
+
 
         closeModal()
         // reset reviewText and stars
@@ -33,28 +41,35 @@ export default function CreateReview({spot,user}){
         // console.log(reviewText)
         setStars(0)
 
+
+        await dispatch(thunkGetReviews(spotId))
         return res
     }
 
-    function setRating(e){
+
+    function setRating(e) {
         e.preventDefault()
         setStars(e.target.id)
     }
 
 
-    return(
+
+
+    return (
         <div className="createReviewContainer">
             <h1 className="revStay">How was your stay?</h1>
             <form onSubmit={submitHandler} className="createForm">
 
+
                 <textarea
-                onChange={(e) => setReviewText(e.target.value)}
-                value={reviewText}
-                className="reviewText"
-                type='text'
-                placeholder="Leave your review here..."
-                required
+                    onChange={(e) => setReviewText(e.target.value)}
+                    value={reviewText}
+                    className="reviewText"
+                    type='text'
+                    placeholder="Leave your review here..."
+                    required
                 />
+
 
                 <div className="starBox">
                     <i id="1" className={stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={setRating}></i>
@@ -64,10 +79,12 @@ export default function CreateReview({spot,user}){
                     <i id="5" className={stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"} onClick={setRating}></i>
                     <p className="starLabel">Stars</p>
                 </div>
-                <button className="submitButton" disabled={reviewText.length < 10 || stars < 1}>Submit Review</button>
+                <button className="submitButton" disabled={reviewText.length < 10 || stars < 1} onSubmit={thunkGetReviews()}>Submit Review</button>
             </form>
         </div>
     )
+
+
 
 
 }

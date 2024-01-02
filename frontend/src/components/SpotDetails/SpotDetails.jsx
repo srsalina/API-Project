@@ -7,11 +7,18 @@ import './SpotDetails.css'
 
 
 
+
+
+
 function SpotDetails() {
     const dispatch = useDispatch()
     const { spotId } = useParams()
     const spot = useSelector((state) => state.spots.currSpot)
     console.log(spot)
+
+
+
+
 
 
     useEffect(() => {
@@ -24,9 +31,15 @@ function SpotDetails() {
     if (spot.id !== parseInt(spotId)) return null;
 
 
-    function throwAlert(){
+
+
+    function throwAlert() {
         alert("Feature Coming Soon")
     }
+
+
+
+
 
 
 
@@ -35,11 +48,14 @@ function SpotDetails() {
     if (spot.numReviews === 1) reviewLabel = 'Review'
     if (spot.numReviews > 1) reviewLabel = 'Reviews'
 
+
     let reviewCount = spot.numReviews
+
 
     if (spot.numReviews === 0) reviewCount = ''
     let separator = '•'
     if (!spot.numReviews) separator = ''
+
 
     return (
         <div id='spotDetails'>
@@ -60,6 +76,7 @@ function SpotDetails() {
             </div>
             <div className='descriptions'>
                 <div className='text-button'>
+
 
                     <div className='details'>
                         <h2 className='ownerName'>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
@@ -84,6 +101,8 @@ function SpotDetails() {
         </div>
     )
 }
+
+
 
 
 export default SpotDetails

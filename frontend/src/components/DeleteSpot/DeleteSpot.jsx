@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkDeleteCurrSpot } from "../../store/spots";
+import { thunkDeleteCurrSpot, thunkGetAllSpots} from "../../store/spots";
 import './DeleteSpot.css'
+
+
+
+
+
 
 
 
@@ -13,18 +18,23 @@ function DeleteSpot({ spot }) {
     const { closeModal } = useModal()
     const [spotExists, setSpotExists] = useState(true)
 
-    function spotDelete(e){
+
+    async function spotDelete(e) {
         e.preventDefault()
-        dispatch(thunkDeleteCurrSpot(spot.id))
+        await dispatch(thunkDeleteCurrSpot(spot.id))
+        await dispatch(thunkGetAllSpots())
         closeModal()
+
+
         setSpotExists(false)
+        // dispatch(thunkGetAllSpots())
     }
 
-    function cancel(e){
+
+    function cancel(e) {
         e.preventDefault()
         closeModal()
     }
-
     return (
         <div>
             {spotExists && (
@@ -38,5 +48,6 @@ function DeleteSpot({ spot }) {
         </div>
     )
 }
+
 
 export default DeleteSpot

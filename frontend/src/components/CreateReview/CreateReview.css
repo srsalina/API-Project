@@ -3,30 +3,34 @@
     font-size: 26px;
 }
 
+
 .createReviewContainer {
     display: flex;
     flex-direction: column;
     height: 300px;
-    width: 400px;
+    width: 500px;
     /* justify-content: center; */
     align-items: center;
 }
+
 
 .reviewText {
     display: flex;
     width: 370px;
     height: 120px;
-    margin-left: 12px;
+    /* margin-left: 12px; */
     background-color: #D6E8EC;
 }
 
+
 .starBox {
     display: inline-flex;
-    width: 400px;
+    width: 376px;
     justify-content: center;
     align-items: center;
     height: 50px
 }
+
 
 .starLabel {
     padding-left: 5px;
@@ -34,19 +38,22 @@
     font-family: sans-serif;
 }
 
+
 .submitButton {
     display: flex;
-    width: 350px;
-    margin-left: 25px;
+    width: 376px;
     justify-content: center;
     box-shadow: 2px 2px darkgray;
     border: 3px solid darkgray;
     padding: 12px 0px 12px 0px;
+    margin-bottom: 20px;
 }
+
 
 .submitButton:enabled:hover {
     cursor: pointer;
 }
+
 
 .submitButton:enabled {
     color: white;
@@ -54,6 +61,7 @@
     box-shadow: 2px 2px black;
     border: 3px solid black;
 }
+
 
 .fa-regular.fa-star {
     padding-top: 12px;
