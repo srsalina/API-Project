@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
   const ref = useRef()
 
 
-  function activeMenu(e) {
+  const activeMenu = (e) => {
     e.stopPropagation();
     setShowMenu(!showMenu)
   }
@@ -26,7 +26,7 @@ function Navigation({ isLoaded }) {
   useEffect(() => {
     if (!showMenu) return
 
-    function closeMenu(e) {
+    const closeMenu = (e) => {
       if (!ref.current.contains(e.target)) {
         setShowMenu(false)
       }
@@ -40,10 +40,11 @@ function Navigation({ isLoaded }) {
 
   }, [showMenu])
 
-  const listClassName = "dropDown" + (showMenu ? '' : 'hidden')
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
 
   let sessionLinks;
+
   if (sessionUser) {
     sessionLinks = (
       <>
@@ -64,7 +65,7 @@ function Navigation({ isLoaded }) {
         </button>
 
 
-        <ul className={listClassName} ref={ref}>
+        <ul className={ulClassName} ref={ref}>
           <div className='buttonContainer'>
             <OpenModalButton
               buttonText="Log In"
@@ -90,7 +91,7 @@ function Navigation({ isLoaded }) {
     <ul className='navBar'>
       <>
         <NavLink to="/" className='toHome'>
-          Home
+          SeaBnB
         </NavLink>
       </>
 
