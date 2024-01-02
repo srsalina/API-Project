@@ -50,6 +50,65 @@ module.exports = {
         name: "George W. Bush Summer Home",
         description: "That's just where he lives!",
         price: 5000
+      },
+      {
+        ownerId: 4,
+        address: "2469 Sunset Boulevard",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 38.54321,
+        lng: 48.76543,
+        name: "Random Sunset View Retreat",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 200
+      },
+      {
+        ownerId: 5,
+        address: "8727 Forest Haven Lane",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 58.87654,
+        lng: 35.43210,
+        name: "Random Enchanted Forest Cottage",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 1600
+      }, {
+        ownerId: 6,
+        address: "4329 Serenity Street",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 26.10987,
+        lng: 51.87654,
+        name: "Random Tranquil Retreat",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 700
+      },
+      {
+        ownerId: 1,
+        address: "1034 Harborview Drive",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 37.98765,
+        lng: 22.10987,
+        name: "Random Harborview Haven",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 1300
+      },
+      {
+        ownerId: 2,
+        address: "3243 Skyline Terrace",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 39.65432,
+        lng: 33.21098,
+        name: "Random Skyline Sanctuary",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 1150
       }
     ], { validate: true })
   },

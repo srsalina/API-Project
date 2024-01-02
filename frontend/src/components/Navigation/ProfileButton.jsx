@@ -19,9 +19,9 @@ function ProfileButton({ user }) {
 
   useEffect(() => {
     if (!showMenu) return;
-
+    console.log("Close Menu")
     const closeMenu = (e) => {
-      if (ulRef.current && !ulRef.current.contains(e.target)) {
+      if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
@@ -37,7 +37,7 @@ function ProfileButton({ user }) {
     navigate('/')
   };
 
-  const ulClassName = "dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>

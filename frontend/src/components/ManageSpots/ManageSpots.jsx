@@ -14,13 +14,13 @@ export default function ManageSpots() {
   console.log('spots: ',spots)
 
 
+  if (!spots) {
+    return null;
+  }
+
   useEffect(() => {
-      if (!spots) {
-        dispatch(thunkGetAllSpots());
-        return null;
-      }
     dispatch(thunkGetAllSpots());
-  }, [dispatch,spots]);
+  }, [dispatch]);
 
   const userSpots = spots.filter((spot) => spot.ownerId === user.id);
 
