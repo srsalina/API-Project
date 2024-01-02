@@ -24,7 +24,7 @@ function LoginFormModal() {
       });
   };
 
-  function demoUser() {
+  const demoUser = () => {
     setCredential("Demo-lition")
     setPassword("password")
   }
