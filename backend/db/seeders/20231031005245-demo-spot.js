@@ -109,6 +109,30 @@ module.exports = {
         name: "Random Skyline Sanctuary",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         price: 1150
+      },
+      {
+        ownerId: 2,
+        address: "3243 N Terrace",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 39.65432,
+        lng: 33.21098,
+        name: "Random Skyline Sanctuary",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 1150
+      },
+      {
+        ownerId: 3,
+        address: "3243 S Terrace",
+        city: "Random City",
+        state: "Random State",
+        country: "Random Country",
+        lat: 39.65432,
+        lng: 33.21098,
+        name: "Random Skyline Sanctuary",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        price: 1150
       }
     ], { validate: true })
   },
