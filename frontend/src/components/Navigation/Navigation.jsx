@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import '../OpenModalButton/OpenModalButton.css'
 import { useEffect, useRef, useState } from 'react';
+import logoImage from '../../../../images/seaawhite.png'
 
 
 function Navigation({ isLoaded }) {
@@ -116,7 +117,7 @@ function Navigation({ isLoaded }) {
     <ul className='navBar'>
       <>
         <NavLink to="/" className='toHome'>
-          SeaBnB
+        <img src={logoImage} alt="SeaBnB" style={{ width: '200px', height: 'auto' }} />
         </NavLink>
       </>
 
