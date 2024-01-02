@@ -120,7 +120,7 @@ module.exports = {
 
     return queryInterface.bulkDelete(options, {
       city: {
-        [Op.in] : ["Burgertown","Spookville","Bushtown"]
+        [Op.in] : ["Burgertown","Spookville","Bushtown", "Random City"]
       }
     })
   }

@@ -133,7 +133,7 @@ module.exports = {
     const Op = Sequelize.Op;
 
     return queryInterface.bulkDelete(options, {
-      url: { [Op.in]: ['spotimage1.com', 'spotimage2.com', 'spotimage3.com'] }
+      url: { [Op.in]: ['spotimage1.com', 'spotimage2.com', 'spotimage3.com','https://shorturl.at/bJL07','https://shorturl.at/dmOQ0','https://shorturl.at/hit56','https://shorturl.at/begAQ','https://shorturl.at/dnrHM','https://shorturl.at/lqERV','https://shorturl.at/dnAEY'] }
     }, {});
   }
 };

@@ -24,9 +24,9 @@ function LoginFormModal() {
       });
   };
 
-  function demoUser(){
-    setCredential("DemoUser")
-    setPassword("demopass")
+  function demoUser() {
+    setCredential("Demo-lition")
+    setPassword("password")
   }
 
 
