@@ -117,7 +117,7 @@ function Navigation({ isLoaded }) {
     <ul className='navBar'>
       <>
         <NavLink to="/" className='toHome'>
-        <img src={logoImage} alt="SeaBnB" style={{ width: '200px', height: 'auto' }} />
+        <img src={logoImage} alt="SeaBnB" style={{ width: '120px', height: 'auto' }} />
         </NavLink>
       </>
 
