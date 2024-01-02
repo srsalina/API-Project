@@ -5,6 +5,7 @@ import { thunkGetAllSpots } from '../../store/spots'
 import './HomePage.css'
 // import spotsReducer from "../../store/spots";
 
+
 export default function HomePage(){
     const dispatch = useDispatch()
     const spots = useSelector((state) => state.spots.allSpots.Spots)
@@ -12,6 +13,8 @@ export default function HomePage(){
     useEffect(() =>{
         dispatch(thunkGetAllSpots())
     }, [dispatch])
+
+
 
 
     const homePageContainer = spots?.map((spot) =>(
@@ -34,6 +37,7 @@ export default function HomePage(){
             </NavLink >
         </div >
     ))
+
 
     return(
         <div className="page">

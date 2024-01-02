@@ -8,45 +8,60 @@ import './Reviews.css'
 
 
 
+
+
+
 function Reviews({ spotId }) {
     const dispatch = useDispatch()
+
 
     const spot = useSelector((state) => state.spots.currSpot)
     const currentReviews = useSelector((state) => state.reviews.spot.Reviews)
     const currentUser = useSelector((state) => state.session.user)
 
+
     // console.log("spot: ", spot)
     // console.log("revs: ", currentReviews)
     // console.log("user: ", currentUser)
 
+
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
 
-    useEffect(() =>{
+
+    useEffect(() => {
         dispatch(thunkGetReviews(spotId))
     }, [dispatch, spotId])
 
-    if(!spot) return null
-    if(!currentReviews) return null
+
+    if (!spot) return null
+    if (!currentReviews) return null
+    if (!spot.avgRating) return null
 
 
     const reviewOrder = [...currentReviews].sort((review, nextReview) => new Date(nextReview.createdAt) - new Date(review.createdAt)); //! works
 
+
     let ownerVerify = false;
 
-    if(spot && spot.Owner && currentUser){
+
+    if (spot && spot.Owner && currentUser) {
         let ownerboolie = spot.Owner.id === currentUser.id
         console.log(ownerboolie)
         ownerVerify = ownerboolie
     }
 
+
     let reviewAmount = 'Reviews'
 
-    if(currentReviews.length === 1){
+
+    if (currentReviews.length === 1) {
         reviewAmount = 'Review'
     }
 
+
     let loggedIn = false
-    if(currentUser) loggedIn = true
+    if (currentUser) loggedIn = true
+
 
     let notReviewed = true
     if (currentReviews) {
@@ -59,14 +74,18 @@ function Reviews({ spotId }) {
     }
 
 
+
+
     // console.log(currentReviews)
 
+
     //***************************************************  Return if there are no current reviews
-    if(!currentReviews.length){
+    if (!currentReviews.length) {
         return (
             <div className='reviewContainer'>
                 <div className='reviewHeader'>
                     <i className="fa-solid fa-star"></i>
+
 
                     <p className="reviewLabel">New</p>
                 </div>
@@ -85,12 +104,14 @@ function Reviews({ spotId }) {
     }
 
 
-//! else
+
+
+    //! else
     return (
         <div className="reviewContainer">
+            <i id='reviewStar' className="fa-solid fa-star"></i>
             <div className='reviewHeader'>
-                <i id='reviewStar' className="fa-solid fa-star"></i>
-                <div className='avgRate'>{spot.avgRating.toFixed(1)}</div>
+                <div className='avgRate'>{spot && spot.avgRating && spot.avgRating.toFixed(1)}</div>
                 <div>•</div>
                 <div className='reviewsNumber'> {spot.numReviews} </div>
                 <div className='reviewAmount'> {reviewAmount}</div>
@@ -122,11 +143,13 @@ function Reviews({ spotId }) {
                         ) : null}
                     </div>
 
-                )).reverse()
+
+                ))
                 }
             </div>
         </div>
     )
 }
+
 
 export default Reviews

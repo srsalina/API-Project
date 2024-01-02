@@ -8,14 +8,21 @@ import './Navigation.css';
 import '../OpenModalButton/OpenModalButton.css'
 import { useEffect, useRef, useState } from 'react';
 
+
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+
+
 
 
   const [showMenu, setShowMenu] = useState(false);
 
 
+
+
   const ref = useRef()
+
+
 
 
   const activeMenu = (e) => {
@@ -23,8 +30,10 @@ function Navigation({ isLoaded }) {
     setShowMenu(!showMenu)
   }
 
+
   useEffect(() => {
     if (!showMenu) return
+
 
     const closeMenu = (e) => {
       if (!ref.current.contains(e.target)) {
@@ -32,18 +41,25 @@ function Navigation({ isLoaded }) {
       }
     }
 
+
     document.addEventListener('click', closeMenu)
+
 
     return function () {
       document.removeEventListener('click', closeMenu)
     }
 
+
   }, [showMenu])
+
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
 
+
+
   let sessionLinks;
+
 
   if (sessionUser) {
     sessionLinks = (
@@ -57,12 +73,16 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
 
+
       <ul>
+
 
         <button onClick={activeMenu} className='menu'>
           <i className="fa-solid fa-bars"></i>
           <i className="fa-regular fa-user"></i>
         </button>
+
+
 
 
         <ul className={ulClassName} ref={ref}>
@@ -73,19 +93,24 @@ function Navigation({ isLoaded }) {
               modalComponent={<LoginFormModal />}
             />
 
+
             <OpenModalButton
               buttonText="Sign Up"
               className='signup'
               modalComponent={<SignupFormModal />}
             />
 
+
           </div>
         </ul>
 
+
       </ul>
+
 
     );
   }
+
 
   return (
     <ul className='navBar'>
@@ -95,13 +120,17 @@ function Navigation({ isLoaded }) {
         </NavLink>
       </>
 
+
       <div className='spotmenublob'>
+
 
         {isLoaded && sessionLinks}
       </div>
 
+
     </ul>
   );
 }
+
 
 export default Navigation

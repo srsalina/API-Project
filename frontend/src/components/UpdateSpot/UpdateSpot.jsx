@@ -5,12 +5,16 @@ import { thunkSpotDetails, thunkSpotUpdate } from "../../store/spots";
 import './UpdateSpot.css'
 
 
+
+
 function UpdateSpot() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { spotId } = useParams()
 
+
     const spot = useSelector((state) => state.spots.currSpot)
+
 
     const [country, setCountry] = useState(spot.country)
     const [address, setAddress] = useState(spot.address)
@@ -21,26 +25,22 @@ function UpdateSpot() {
     const [description, setDescription] = useState(spot.description)
     const [name, setName] = useState(spot.name)
     const [price, setPrice] = useState(spot.price)
-    const [prevImg, setPrevImg] = useState(spot.previewImage || "")
-    const [imgTwo, setImgTwo] = useState(spot.imgTwo || "")
-    const [imgThree, setImgThree] = useState(spot.imgThree || "")
-    const [imgFour, setImgFour] = useState(spot.imgFour || "")
-    const [imgFive, setImgFive] = useState(spot.imgFive || "")
     const [errors, setErrors] = useState([])
     const validImage = [".jpg", ".jpeg", ".png"]
     const errs = []
     const imgs = []
-    if (prevImg) imgs.push(prevImg)
-    if (imgTwo) imgs.push(imgTwo)
-    if (imgThree) imgs.push(imgThree)
-    if (imgFour) imgs.push(imgFour)
-    if (imgFive) imgs.push(imgFive)
+
+
+
 
 
 
     useEffect(() => {
         dispatch(thunkSpotDetails(spotId))
     }, [dispatch, spotId])
+
+
+
 
 
 
@@ -54,16 +54,15 @@ function UpdateSpot() {
         setDescription(spot.description || "")
         setName(spot.name || "")
         setPrice(spot.price || "")
-        setPrevImg(spot.previewImage || "")
-        setImgTwo(spot.imgTwo || "")
-        setImgThree(spot.imgThree || "")
-        setImgFour(spot.imgFour || "")
-        setImgFive(spot.imgFive || "")
     }, [spot])
 
 
 
+
+
+
     function validateInputs() {
+
 
         // console.log("Validate is running")
         if (!country) errs.push("Country is required")
@@ -75,7 +74,8 @@ function UpdateSpot() {
         if (description.length < 30) errs.push("Description must be at least 30 characters")
         if (!name) errs.push("Title is required")
         if (!price) errs.push("Price is required")
-        if (!prevImg) errs.push("Preview image is required")
+
+
 
 
         for (let i = 0; i < imgs.length; i++) {
@@ -96,6 +96,7 @@ function UpdateSpot() {
         // return errors.length === 0
     }
 
+
     const handleUpdate = async (e) => {
         e.preventDefault()
         console.log("handleUpdate is running")
@@ -112,7 +113,9 @@ function UpdateSpot() {
                 price,
             }
 
-            const res = dispatch(thunkSpotUpdate(updatedSpot, spot.id))
+
+            const res = await dispatch(thunkSpotUpdate(updatedSpot, spot.id))
+
 
             if (res) {
                 navigate(`/spots/${res.id}`)
@@ -146,6 +149,7 @@ function UpdateSpot() {
                             required
                         ></input>
 
+
                     </label>
                     <label>
                         <div className='titleAndErrors'>
@@ -159,6 +163,7 @@ function UpdateSpot() {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         ></input>
+
 
                     </label>
                     <label className="citystate">
@@ -178,6 +183,7 @@ function UpdateSpot() {
                             <p className="error">{errors.find((error) => error.includes("Address"))}</p>
                         </div>
 
+
                         <input
                             type='text'
                             placeholder="State"
@@ -185,6 +191,7 @@ function UpdateSpot() {
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                         ></input>
+
 
                     </label>
                     <label className="latlng">
@@ -261,54 +268,6 @@ function UpdateSpot() {
                         ></input>
                     </div>
                 </div>
-                <div className='updateImgs'>
-                    <h2>Liven up your spot with photos</h2>
-                    <p>Submit a link to at least one photo to publish your spot</p>
-                    <div className='titleAndErrors'>
-                        <p className='locaInputs'>Preview Image</p>
-                        <p className="error">{errors.find((error) => error.includes("Preview"))}</p>
-                        <p className="error">{errors.find((error) => error.includes("Image"))}</p>
-                    </div>
-                    <input
-                        type='text'
-                        placeholder="Preview Image URL"
-                        id='inputUpdate'
-                        value={prevImg}
-                        onChange={(e) => setPrevImg(e.target.value)}
-                    ></input>
-                    <p className='locaInputs'>Image 1</p>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
-                        id='inputUpdate'
-                        value={imgTwo}
-                        onChange={(e) => setImgTwo(e.target.value)}
-                    ></input>
-                    <p className='locaInputs'>Image 2</p>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
-                        id='inputUpdate'
-                        value={imgThree}
-                        onChange={(e) => setImgThree(e.target.value)}
-                    ></input>
-                    <p className='locaInputs'>Image 3</p>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
-                        id='inputUpdate'
-                        value={imgFour}
-                        onChange={(e) => setImgFour(e.target.value)}
-                    ></input>
-                    <p className='locaInputs'>Image 4</p>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
-                        id='inputUpdate'
-                        value={imgFive}
-                        onChange={(e) => setImgFive(e.target.value)}
-                    ></input>
-                </div>
                 <div className='casButton'>
                     <button type='submit' className='uas' onClick={validateInputs}>
                         Update Spot
@@ -317,7 +276,9 @@ function UpdateSpot() {
             </form>
         </div>
 
+
     )
 }
+
 
 export default UpdateSpot

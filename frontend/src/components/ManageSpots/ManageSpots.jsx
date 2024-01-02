@@ -6,24 +6,31 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./ManageSpots.css";
 
+
 export default function ManageSpots() {
   const dispatch = useDispatch();
+
 
   const spots = useSelector((state) => state.spots.allSpots.Spots);
   const user = useSelector((state) => state.session.user);
   console.log('spots: ', spots)
 
 
+
+
   useEffect(() => {
     dispatch(thunkGetAllSpots());
   }, [dispatch]);
+
 
   if (!spots) {
     return null;
   }
   const userSpots = spots.filter((spot) => spot.ownerId === user.id);
 
+
   //   console.log(userSpots);
+
 
   const spotsDisplay = userSpots?.map((spot) => (
     <div key={spot?.id} className="spotsContainer">
@@ -34,13 +41,13 @@ export default function ManageSpots() {
           </div>
         </div>
         <div className="locationPrice">
-          <p className="location">
+          <p className="location2">
             {spot.city}, {spot.state}
           </p>
-          <p className="price">${spot.price}.00 night</p>
+          <p className="price2">${spot.price}.00 night</p>
         </div>
         <div className="reviewSection">
-          <div className="reviews">
+          <div className="reviews2">
             <i className="fa-solid fa-star"></i>
             {typeof spot.avgRating === "number" ? (
               <p>{parseFloat(spot.avgRating).toFixed(1)}</p>
@@ -65,6 +72,7 @@ export default function ManageSpots() {
       </div>
     </div>
   ));
+
 
   return (
     <div className="manageBox">

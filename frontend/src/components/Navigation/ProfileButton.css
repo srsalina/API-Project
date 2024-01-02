@@ -2,6 +2,7 @@
     display: none;
 }
 
+
 .profile-dropdown {
     position: fixed;
     right: 28px;
@@ -17,14 +18,17 @@
     padding: 5px 5px 5px 5px
 }
 
+
 .menu {
     border-radius: 30px;
     padding: 10px 20px 10px 20px;
 }
 
+
 .fa-solid.fa-bars {
     padding-right: 5px
 }
+
 
 .logoutButton {
     display: flex;
@@ -32,28 +36,34 @@
     border: 1px solid black
 }
 
+
 .text {
     padding-left: 0px
 }
+
 
 .textEm {
     padding-left: 0px;
     margin-bottom: 8px;
 }
 
+
 .manageSpots {
     padding-left: 0px;
     /* text-decoration: none; */
 }
 
+
 .loButton {
     padding-left: 0px;
 }
+
 
 /* .buttoncontainer {
     padding: 5px 5px 5px 5px;
     border-radius: 10px;
 } */
+
 
 .manageNav {
     text-decoration: none;

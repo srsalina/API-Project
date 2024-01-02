@@ -5,16 +5,20 @@
     margin: auto;
     flex-direction: column;
 
+
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 
 .spotName {
     display: flex;
 }
 
+
 .imgs {
     display: flex;
 }
+
 
 .mainImage {
     width: 500px;
@@ -24,11 +28,13 @@
     margin-top: 3px;
 }
 
+
 .extras {
     display: flex;
     /* border: 2px solid black; */
     border-radius: 2px;
 }
+
 
 .otherImages {
     display: flex;
@@ -38,19 +44,28 @@
     width: fit-content
 }
 
+
 .moreImages {
     display: flex;
     flex-direction: column;
     /* border: 1px solid red; */
     height: 300px;
     width: fit-content
-    /* margin-left: 10px */
+        /* margin-left: 10px */
 }
+
+
+.postRevButton {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .text-button {
     display: flex;
     border-bottom: 2px solid black;
 }
+
 
 .details {
     /* border: 1px solid yellow; */
@@ -58,12 +73,16 @@
     flex-direction: column;
     margin: none;
 }
+
+
 .description {
     /* border: 1px solid orange; */
     padding-right: 25px;
     margin-top: -10px;
     width: 620px
 }
+
+
 .reserve {
     display: inline-flex;
     border: 3px solid black;
@@ -76,9 +95,11 @@
     background-color: white;
 }
 
+
 .notButton {
     display: flex;
 }
+
 
 .reservationInfo {
     display: flex;
@@ -91,11 +112,15 @@
     font-family: sans-serif;
 }
 
+
 #additionalImg {
     display: flex;
     width: 240px;
     height: 150px
 }
+
+
+
 
 
 
@@ -106,9 +131,12 @@
 }
 
 
+
+
 .reviewInfo .fa-solid.fa-star {
     margin-top: 5px;
 }
+
 
 .numRevs {
     display: flex;
@@ -116,6 +144,7 @@
     /* margin-bottom: 1px; */
     padding-left: 10px;
 }
+
 
 .reserveButton {
     display: flex;
@@ -127,28 +156,35 @@
     box-shadow: 2px 2px black;
     border: 3px solid black;
     padding: 12px 0px 12px 0px;
-    background-color: #FF5A5A;
+    background-color: #96BDC8;
 }
+
 
 .extra1 {
     border: 2px solid black;
     margin: 3px 3px 3px 3px;
 }
 
+
 .extra2 {
     border: 2px solid black;
     margin: 3px 3px 3px 3px;
 }
+
 
 .extra3 {
     border: 2px solid black;
     margin: 3px 3px 3px 3px;
 }
 
+
 .extra4 {
     border: 2px solid black;
     margin: 3px 3px 3px 3px;
 }
+
+
+
 
 
 
@@ -158,11 +194,14 @@
 } */
 
 
+
+
 .location {
     width: 600px;
     margin-top: -16px;
     padding-bottom: 15px;
 }
+
 
 .dot {
     display: inline-flex;
