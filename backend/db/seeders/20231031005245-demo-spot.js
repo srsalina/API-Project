@@ -23,7 +23,7 @@ module.exports = {
         lat: 23.456453,
         lng: 45.456433,
         name: "The burgeriest town around",
-        description: "Wow! That was some burger!",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         price: 1500
 
       },
@@ -36,7 +36,7 @@ module.exports = {
         lat: 34.65763,
         lng: 23.35521,
         name: "Scary house",
-        description: "It's right behind me, isn't it?",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         price: 1000
       },
       {
@@ -48,7 +48,7 @@ module.exports = {
         lat: 64.23436,
         lng: 97.35622,
         name: "George W. Bush Summer Home",
-        description: "That's just where he lives!",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         price: 5000
       },
       {
