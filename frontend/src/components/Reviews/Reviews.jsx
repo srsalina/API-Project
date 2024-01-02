@@ -111,7 +111,7 @@ function Reviews({ spotId }) {
         <div className="reviewContainer">
             <i id='reviewStar' className="fa-solid fa-star"></i>
             <div className='reviewHeader'>
-                <div className='avgRate'>{spot && spot.avgRating && spot.avgRating.toFixed(1)}</div>
+                <div className='avgRate'>{typeof spot.avgRating === 'number' ? (<p>{parseFloat(spot.avgRating).toFixed(1)}</p>) : (<p>New</p>)}</div>
                 <div>•</div>
                 <div className='reviewsNumber'> {spot.numReviews} </div>
                 <div className='reviewAmount'> {reviewAmount}</div>

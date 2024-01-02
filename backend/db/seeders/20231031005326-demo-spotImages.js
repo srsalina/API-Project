@@ -11,14 +11,14 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: 'http://tinyurl.com/4c8t6vsz',
+        url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large',
         preview: true
       },
-      { spotId: 1, url: 'http://tinyurl.com/4c8t6vsz', preview: false },
-      { spotId: 1, url: 'http://tinyurl.com/4c8t6vsz', preview: false },
-      { spotId: 1, url: 'http://tinyurl.com/4c8t6vsz', preview: false },
-      { spotId: 1, url: 'http://tinyurl.com/4c8t6vsz', preview: false },
-      { spotId: 1, url: 'http://tinyurl.com/4c8t6vsz', preview: false },
+      { spotId: 1, url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large', preview: false },
+      { spotId: 1, url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large', preview: false },
+      { spotId: 1, url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large', preview: false },
+      { spotId: 1, url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large', preview: false },
+      { spotId: 1, url: 'https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large', preview: false },
       {
         spotId: 2,
         url: 'http://tinyurl.com/bdf9uwww',
@@ -149,7 +149,7 @@ module.exports = {
     const Op = Sequelize.Op;
 
     return queryInterface.bulkDelete(options, {
-      url: { [Op.in]: ['https://shorturl.at/fpqG6','https://shorturl.at/ahVY0','https://shorturl.at/giU59','http://tinyurl.com/3edme932','https://shorturl.at/lsIOS','https://shorturl.at/enuW9','http://tinyurl.com/3chkxypb','http://tinyurl.com/wubr2t24','http://tinyurl.com/45dyenrz','http://tinyurl.com/469wx2sv','http://tinyurl.com/2vcbmmwd','http://tinyurl.com/3kjessps','http://tinyurl.com/3ysusykd','http://tinyurl.com/cw375psj','http://tinyurl.com/y7swbs3t','http://tinyurl.com/ysxycw8n','http://tinyurl.com/mtzxpwz6','http://tinyurl.com/5facjfhj','http://tinyurl.com/yeyrfspa','http://tinyurl.com/43d7rzpb','http://tinyurl.com/5fk4cyf9','http://tinyurl.com/bddmvax8','http://tinyurl.com/yc4cf32p','http://tinyurl.com/2fjjcx6y','http://tinyurl.com/3zwjd6zn','http://tinyurl.com/88bm8ebk','http://tinyurl.com/4kfyfxw7','http://tinyurl.com/2k52cunj','http://tinyurl.com/5hh6us45','http://tinyurl.com/5cbmkd8e','http://tinyurl.com/3262e3dn','http://tinyurl.com/yc5tzahf','http://tinyurl.com/2c5szs32','http://tinyurl.com/yvwf2xp9','https://shorturl.at/qswVZ','https://shorturl.at/kxH46','https://shorturl.at/cHIM0','https://shorturl.at/opxJ3','https://shorturl.at/aeiCW','http://tinyurl.com/y5bvjrnr','http://tinyurl.com/bdfheje8','http://tinyurl.com/4kh8hfzh','http://tinyurl.com/bdf9uwww','http://tinyurl.com/mryzx7ez','http://tinyurl.com/4pm22cux','http://tinyurl.com/32khd4v3','http://tinyurl.com/mvn4982p','http://tinyurl.com/umxjbvc7','http://tinyurl.com/4c8t6vsz'] }
+      url: { [Op.in]: ['https://shorturl.at/fpqG6','https://shorturl.at/ahVY0','https://shorturl.at/giU59','http://tinyurl.com/3edme932','https://shorturl.at/lsIOS','https://shorturl.at/enuW9','http://tinyurl.com/3chkxypb','http://tinyurl.com/wubr2t24','http://tinyurl.com/45dyenrz','http://tinyurl.com/469wx2sv','http://tinyurl.com/2vcbmmwd','http://tinyurl.com/3kjessps','http://tinyurl.com/3ysusykd','http://tinyurl.com/cw375psj','http://tinyurl.com/y7swbs3t','http://tinyurl.com/ysxycw8n','http://tinyurl.com/mtzxpwz6','http://tinyurl.com/5facjfhj','http://tinyurl.com/yeyrfspa','http://tinyurl.com/43d7rzpb','http://tinyurl.com/5fk4cyf9','http://tinyurl.com/bddmvax8','http://tinyurl.com/yc4cf32p','http://tinyurl.com/2fjjcx6y','http://tinyurl.com/3zwjd6zn','http://tinyurl.com/88bm8ebk','http://tinyurl.com/4kfyfxw7','http://tinyurl.com/2k52cunj','http://tinyurl.com/5hh6us45','http://tinyurl.com/5cbmkd8e','http://tinyurl.com/3262e3dn','http://tinyurl.com/yc5tzahf','http://tinyurl.com/2c5szs32','http://tinyurl.com/yvwf2xp9','https://shorturl.at/qswVZ','https://shorturl.at/kxH46','https://shorturl.at/cHIM0','https://shorturl.at/opxJ3','https://shorturl.at/aeiCW','http://tinyurl.com/y5bvjrnr','http://tinyurl.com/bdfheje8','http://tinyurl.com/4kh8hfzh','http://tinyurl.com/bdf9uwww','http://tinyurl.com/mryzx7ez','http://tinyurl.com/4pm22cux','http://tinyurl.com/32khd4v3','http://tinyurl.com/mvn4982p','http://tinyurl.com/umxjbvc7','https://a0.muscache.com/im/pictures/4006809/7bfbbb2b_original.jpg?aki_policy=x_large'] }
     }, {});
   }
 };
