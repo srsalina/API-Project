@@ -1,12 +1,20 @@
-.dropDown.hidden {
+.profile-dropdown.hidden {
     display: none;
 }
 
-.dropDown {
-    display: flex;
-    flex-direction: column;
+.profile-dropdown {
     position: fixed;
     right: 28px;
+    /* padding-top:20px; */
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0px;
+    align-items: center;
+    padding: 5px 5px 5px 5px
 }
 
 html {
